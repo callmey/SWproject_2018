@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+<style>
+    body { padding: 20px; }
+    table.table { width: 700px; }
+    table.table tr:first-child td { background-color: #eee; }
+    td input[type=number] { margin: 0; width: 60px; }
+    .red1 { background-color: #ffeeee; }
+    .red2 { background-color: #ffe8e8; }
+    .red3 { background-color: #ffe2e2; }
+    .red4 { background-color: #ffdbdb; }
+    .red5 { background-color: #ffd5d5; }
+</style>
+</head>
+<script>
+function ProductController($scope) {
+    $scope.products = [
+        { title: '콜라', unitCost: 1800, quantity: 8 },
+        { title: '맥주', unitCost: 2500, quantity: 2 },
+        { title: '사이다', unitCost: 1000, quantity: 3 },
+        { title: "소주", unitCost: 1500, quantity: 4 }
+    ];
+    
+    $scope.color = function(product) {
+        var price = product.unitCost * product.quantity;
+        if (price > 7000) return 'red5';
+        if (price > 6000) return 'red4';
+        if (price > 5000) return 'red3';
+        if (price > 4000) return 'red2';
+        return 'red1';
+    }
+}
+</script>
+<body ng-controller="ProductController">
+
+<table class="table table-bordered">
+    <tr>
+        <td>title</td>
+        <td>unit cost</td>
+        <td>quantity</td>
+        <td>price</td>
+    </tr>    
+    <tr ng-repeat="product in products">    
+        <td class="{{ color(product) }}">{{ product.title }}</td>
+        <td class="{{ color(product) }}"><input type="number" ng-model="product.unitCost" /></td>
+        <td class="{{ color(product) }}"><input type="number" ng-model="product.quantity" /></td>
+        <td class="{{ color(product) }}">{{ product.unitCost * product.quantity }}</td>
+     </tr>
+</table>
+    
+</body>
+</html>
+

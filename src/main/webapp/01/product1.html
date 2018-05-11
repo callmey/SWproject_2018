@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+<style>
+    body { padding: 20px; }
+    table.table { width: 300px; }
+</style>
+</head>
+<body>
+
+<label>title:</label>
+<input type="text" ng-model="title" />
+
+<label>unit cost:</label>
+<input type="number" ng-model="unitCost" />
+
+<label>quantity:</label>
+<input type="number" ng-model="quantity" />
+<hr>
+
+<table class="table table-bordered">
+    <tr><td>title</td><td>{{ title }}</td></tr>
+    <tr><td>unit cost</td><td>{{ unitCost }}</td></tr>
+    <tr><td>quantity</td><td>{{ quantity }}</td></tr>
+    <tr><td>unit cost * quantity</td><td>{{ unitCost * quantity }}</td></tr>
+</table>
+    
+</body>
+</html>
+
+
